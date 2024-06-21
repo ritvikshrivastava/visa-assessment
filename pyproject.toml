@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "visa-assessment"
+version = "0.1.0"
+description = ""
+authors = ["Ritvik Shrivastava"]
+readme = "README.md"
+packages = [{include = "visa_assessment"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.111.0"
+uvicorn = "^0.30.1"
+openai = "^1.35.3"
+requests = "^2.32.3"
+pytest = "^8.2.2"
+pypdf = "^4.2.0"
+black = "^24.4.2"
+isort = "^5.13.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
