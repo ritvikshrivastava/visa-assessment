@@ -4,9 +4,9 @@
 * The API ``visa_assessment/api.py`` receives as input a CV file and assesses the text within the file against
 the eligibility criteria present in ``visa_assessment/eligibility.py`` using OpenAI's GPT-4o model.
 
-* The model is prompted to check against all levels of evidence in our static eligibility document.
+* Zero-Shot Model Prompting: The model is prompted to check against all levels of evidence in our static eligibility document.
 
-* Using the eligibility document as a resource, the model parses the text of the resume 
+* Information Retrieval Step: Using the eligibility document as a resource, the model parses the text of the resume 
 and finds corresponding matches to each criterion/eligibility category.  This code can be found in `visa_assessment/judge.py``
 
 * Once this list is collected, a rating is generated based on the assumptions described later.
@@ -23,7 +23,7 @@ API response is a JSON response with
 ### Assumptions
 * CV files can be of two types of inputs: PDFs, or text files 
 * Categorization: High means atleast 5 criteria being met by evidence in CV, 3-4 means Medium, and the rest give a rating of low.
-* Modeling: 
+* Modeling and Information Retrieval: 
   * For the sake of experimentation using APIs and to cover for the lack of local GPU access to efficiently run open-source models, this project uses GPT-4o as the model of choice to leverage the LLM capabilities. I implemented this using Azure Open AI, but added additional code for it to be run using OpenAI directly. 
   * This can be replaced by any other proprietary model, say Claude/Gemini or any open source model say Llama3 or Mistral7b-instruct if resources are available.
   * A temperature of 0 was chosen as a strict measure to prevent hallucination or creativity and sticking to responses within the text.
