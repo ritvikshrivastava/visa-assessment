@@ -1,5 +1,5 @@
 # Assessment of Visa Eligibility
-An AI system (using OpenAI's GPT-4o) to parse information from a resume/cv file and assess 
+An AI system (using OpenAI's GPT-4o) to retrieve information from a resume/cv file and assess 
 whether the candidate qualifies for an O1A visa or not.
 
 Detailed description in ``docs.md``
