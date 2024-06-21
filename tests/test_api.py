@@ -16,7 +16,6 @@ def test_assess_cv_endpoint_with_file_upload(filepath):
     with open(filepath, "rb") as f:
         files = {"cv": ("sample_cv.txt", f, "text/plain")}
         response = requests.post(url, files=files)
-        print(response.__dict__)
 
     assert response.status_code == 200
     result = response.json()
