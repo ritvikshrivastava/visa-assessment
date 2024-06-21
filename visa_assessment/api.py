@@ -8,10 +8,9 @@ from visa_assessment.judge import judge_eligibility
 
 app = FastAPI()
 
-
 @app.get("/")
 def root():
-    return {"message": "Welcome to the O-1A Visa Assessment"}
+    return {"message": "Welcome to You O-1A Visa Assessment Using LLMs"}
 
 
 @app.post("/assess_visa")
