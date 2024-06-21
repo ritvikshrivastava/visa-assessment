@@ -20,7 +20,7 @@ def test_assess_cv_endpoint_with_file_upload(filepath):
 
     assert response.status_code == 200
     result = response.json()
-    assert "results" in result
+    assert "eligibility criterion" in result
     assert "rating" in result
-    assert isinstance(result["results"], dict)
+    assert isinstance(result["eligibility criterion"], dict)
     assert result["rating"] in ["low", "medium", "high"]

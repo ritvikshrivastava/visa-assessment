@@ -27,14 +27,14 @@ async def judge_eligibility(cv_text: str, azure=True):
             {"role": "user", "content": create_prompt(cv_text)},
         ],
         max_tokens=1024,
-        temperature=0.5,
+        temperature=0.0,
     )
 
     response_text = response.choices[0].message.content
     results = parse_llm_response(response_text)
     rating = get_rating(results)
 
-    return {"results": results, "rating": rating}
+    return {"eligibility criterion": results, "rating": rating}
 
 
 def create_prompt(cv_text: str):
