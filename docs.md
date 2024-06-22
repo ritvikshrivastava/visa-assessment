@@ -32,7 +32,7 @@ API response is a JSON response with
   * This data was then summarized in one-pass using a zero-shot GPT-4o run. This criteria was then stored as a dynamic evidence checking resource in ``visa_assessments/eligiblity.py``
   * This static data source is broken into two pieces per category of eligibility: description, and evidence types.
 
-### Testing & Evaluation
+### Testing
 * The ``tests/`` directory covers unittests to check for correctness
 * The system has ``black`` and ``isort`` installed with poetry to clean-up the code.
 * There is a test file included with Albert Einstein's synthetically generated resume in ``test_cv.txt``
@@ -74,3 +74,25 @@ API response is a JSON response with
   "rating": "high"
 }
 ```
+
+### Evaluation (Implemented Measures)
+#### 1. Gold-set evaluation
+   * Synthetically created a gold set of 20 resumes (``gold_set.json``) using a different LLM, with different labels of low-medium-high eligibility. 
+      Checked manually for annotation.
+   * Evaluation script: ``evaluation/gold_eval.py``
+   * Ran a win-loss analysis for the predicted set against the gold set
+   * This evaluation is a way to ensure the overall results of the system.
+
+#### 2. Natural Language Inference (NLI) Scorer
+  * To check the accuracy of each of the retrieved components, evaluate LLM Responses using _Retrieval_ against the original document (CV):
+  * Step 1: Chunk the original CV document into chunks of text
+  * Step 2: Find the closest matching chunk for each criterion of information by querying it against the CV using a retrieval model.
+  * For the sake of simplicity, the LLM of choice (GPT-4o) serves as the retriever module. Models like Approximate Nearest Neighbors/BM-25 or  ColBERT can be chosen in a more expansive system. 
+  * Step 3: Run a NLI/MNLI scorer (e.g. BART-large-nli) model to calculate NLI score. If the results show entailment, score is marked as correct, otherwise negative in the case of contradiction.
+  * Judgements can be further made on human evaluation to assess the scores of the MNLI model and what threshold of acceptance needs to be set for entailments.
+   
+
+### Additional suggested evaluation measures (not-implemented)
+#### Correctness - Check for consistency and correctness using QAEval. 
+  * Generate questions against the source document (CV) and (gold-label) answers against the same source document.
+  * Test for answers generated for the questions when queried against the response document ("eligibility criterion" in the results.)
