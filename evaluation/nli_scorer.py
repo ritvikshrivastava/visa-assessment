@@ -78,7 +78,7 @@ def calculate_overall_entailment(scores: Dict[str, List[bool]]) -> float:
 def main(cv_text: str, extracted_info: Dict[str, List[str]]):
     """
     :param cv_text: extracted text data from the file
-    :param extracted_info: responses from the request made to the visa assessment statement
+    :param extracted_info: responses from the request made to the visa assessment system. E.g. in the README or the gold_eval.py file.
     :return: NLI scores, overall NLI percentage
     """
     scores = asyncio.run(evaluate_nli(cv_text, extracted_info))
