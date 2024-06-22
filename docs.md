@@ -80,7 +80,7 @@ API response is a JSON response with
    * Synthetically created a gold set of 20 resumes (``gold_set.json``) using a different LLM, with different labels of low-medium-high eligibility. 
       Checked manually for annotation.
    * Evaluation script: ``evaluation/gold_eval.py``
-   * Ran a win-loss analysis for the predicted set against the gold set
+   * Ran a win-loss analysis for the predicted set against the gold set (Achieved 95% accuracy, 19/20: win/loss).
    * This evaluation is a way to ensure the overall results of the system.
 
 #### 2. Natural Language Inference (NLI) Scorer
