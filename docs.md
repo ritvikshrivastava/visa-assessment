@@ -81,7 +81,8 @@ API response is a JSON response with
       Checked manually for annotation.
    * Evaluation script: ``evaluation/gold_eval.py``
    * Ran a win-loss analysis for the predicted set against the gold set (Achieved 95% accuracy, 19/20: win/loss).
-   * This evaluation is a way to ensure the overall results of the system.
+   * This evaluation is a way to ensure the overall results of the system. 
+   * Can also use F1 scores instead of accuracy as a more balanced metric.
 
 #### 2. Natural Language Inference (NLI) Scorer
   * To check the accuracy of each of the retrieved components, evaluate LLM Responses using _Retrieval_ against the original document (CV):
